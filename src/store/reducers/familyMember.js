@@ -1,16 +1,12 @@
 import * as actionTypes from '../actions/actionTypes';
-import {updateObject} from '../utility';
 
 const initialState = {
-    members: [],
-    name: null
+    members: []
 };
 
 const addFamilyMember = (state, action) => {
     return {
         ...state,
-        ...state.members,
-        name: action.name,
         members: state.members.concat(action.name)
     }
 };
