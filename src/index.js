@@ -8,13 +8,13 @@ import thunk from 'redux-thunk';
 
 import './index.css';
 import App from './App';
-import familyMemberReducer from './store/reducers/familyMember';
+import memberReducer from './store/reducers/member';
 import registerServiceWorker from './registerServiceWorker';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-    familyMember: familyMemberReducer
+    member: memberReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(

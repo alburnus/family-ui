@@ -1,3 +1,3 @@
 export {
-    addFamilyMember
-} from './familyMember';
+    addMember
+} from './member';
