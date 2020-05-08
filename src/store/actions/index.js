@@ -1,3 +1,4 @@
 export {
-    addMember
-} from './member';
+    addMember,
+    fetchMembers
+} from './member.actions';

@@ -9,7 +9,7 @@ import * as actions from '../store/actions/index';
 class FamilyMemberForm extends Component {
     state = {
         memberForm: {
-            name: {
+            nickname: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
@@ -22,19 +22,19 @@ class FamilyMemberForm extends Component {
                 valid: false,
                 touched: false
             },
-            dateOfBirth: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Date of birth'
-                },
-                value: '',
-                validation: {
-                    required: true
-                },
-                valid: false,
-                touched: false
-            }
+            // dateOfBirth: {
+            //     elementType: 'input',
+            //     elementConfig: {
+            //         type: 'text',
+            //         placeholder: 'Date of birth'
+            //     },
+            //     value: '',
+            //     validation: {
+            //         required: true
+            //     },
+            //     valid: false,
+            //     touched: false
+            // }
         },
         formIsValid: false
     }
@@ -46,10 +46,7 @@ class FamilyMemberForm extends Component {
             formData[formElementIdentifier] = this.state.memberForm[formElementIdentifier].value;
 
         }
-        const member = {
-            memberData: formData
-        }
-        this.props.onAddMember(member);
+        this.props.onAddMember(formData);
         this.props.history.replace('/family-members');
     }
 
@@ -76,21 +73,18 @@ class FamilyMemberForm extends Component {
         const updatedMemberForm = {
             ...this.state.memberForm
         };
-        console.log(updatedMemberForm);
         const updatedFormElement = {
             ...updatedMemberForm[inputIdentifier]
         };
         updatedFormElement.value = event.target.value;
         updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
         updatedFormElement.touched = true;
-        console.log(updatedFormElement);
         updatedMemberForm[inputIdentifier] = updatedFormElement;
 
         let formIsValid = true;
         for (let inputIdentifier in updatedMemberForm) {
             formIsValid = updatedMemberForm[inputIdentifier].valid && formIsValid;
         }
-        console.log(formIsValid);
         this.setState({memberForm: updatedMemberForm, formIsValid: formIsValid});
     }
 
@@ -99,7 +93,6 @@ class FamilyMemberForm extends Component {
     }
 
     render() {
-        console.log(this.props.match.path);
         const formElementsArray = [];
         for (let key in this.state.memberForm) {
             formElementsArray.push({

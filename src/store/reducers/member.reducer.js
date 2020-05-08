@@ -2,8 +2,29 @@ import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from "../utility";
 
 const initialState = {
-    members: [],
-    loading: false
+    members: {},
+    loading: false,
+    error: null
+};
+
+const fetchMembersStart = (state, action) => {
+    return updateObject(state, {
+        loading: true
+    });
+};
+
+const fetchMembersSuccess = (state, action) => {
+    return updateObject(state, {
+        loading: false,
+        members: action.members
+    });
+};
+
+const fetchMembersFail = (state, action) => {
+    return updateObject(state, {
+        loading: false,
+        error: action.error
+    });
 };
 
 const addMemberStart = (state, action) => {
@@ -13,18 +34,18 @@ const addMemberStart = (state, action) => {
 };
 
 const addMemberSuccess = (state, action) => {
-    const newMember = updateObject(action.memberData, {
-        id: action.memberId
-    });
     return updateObject(state, {
         loading: false,
-        members: state.members.concat(newMember),
+        members: {
+            ...state.members.concat(action.member)
+        }
     });
 };
 
 const addMemberFail = (state, action) => {
     return updateObject(state, {
         loading: false,
+        error: action.error
     });
 };
 
@@ -36,6 +57,12 @@ const reducer = (state = initialState, action) => {
             return addMemberSuccess(state, action);
         case actionTypes.ADD_MEMBER_FAIL:
             return addMemberFail(state, action);
+        case actionTypes.FETCH_MEMBERS_START:
+            return fetchMembersStart(state, action);
+        case actionTypes.FETCH_MEMBERS_SUCCESS:
+            return fetchMembersSuccess(state, action);
+        case actionTypes.FETCH_MEMBERS_FAIL:
+            return fetchMembersFail(state, action);
         default:
             return state;
     }
