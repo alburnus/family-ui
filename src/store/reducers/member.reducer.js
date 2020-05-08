@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from "../utility";
 
 const initialState = {
-    members: {},
+    members: [],
     loading: false,
     error: null
 };
@@ -36,9 +36,7 @@ const addMemberStart = (state, action) => {
 const addMemberSuccess = (state, action) => {
     return updateObject(state, {
         loading: false,
-        members: {
-            ...state.members.concat(action.member)
-        }
+        members: state.members.concat(action.member)
     });
 };
 

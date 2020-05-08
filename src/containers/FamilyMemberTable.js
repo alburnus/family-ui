@@ -5,17 +5,23 @@ import axios from '../axios-family';
 import * as actions from '../store/actions/index';
 import _ from 'lodash';
 
-class FamilyMemberForm extends Component {
+class FamilyMemberTable extends Component {
 
     componentDidMount() {
         this.props.onFetchMembers();
     }
 
+    memberDetailsHandler = (id) => {
+        this.props.memberDetails(id);
+    };
+
     render() {
         let data = null;
         if (!_.isEmpty(this.props.members)) {
+            console.log('render');
+            console.log(this.props.members);
             data = this.props.members.map(member =>
-                <li key={member.id}>
+                <li key={member.id} onClick={(id) => this.memberDetailsHandler(member.id)}>
                     {member.nickname}
                 </li>
             )
@@ -40,4 +46,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(FamilyMemberForm, axios));
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(FamilyMemberTable, axios));
