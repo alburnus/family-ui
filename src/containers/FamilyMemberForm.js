@@ -123,7 +123,7 @@ class FamilyMemberForm extends Component {
         }
         return (
             <div>
-                <h4>Entry your Data</h4>
+                <h4>Enter your Data</h4>
                 {form}
             </div>
         );

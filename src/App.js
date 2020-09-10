@@ -8,7 +8,7 @@ import MemberDetails from "./components/FamilyMember/MemberDetails";
 class App extends Component {
     render() {
         return (
-            <div>
+            <div style={{margin: '10px'}}>
                 <Layout>
                     <Switch>
                         <Route path="/family-members/details/:id" component={MemberDetails}/>
