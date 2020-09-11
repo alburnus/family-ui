@@ -9,12 +9,12 @@ class FamilyMember extends Component {
     };
 
     memberDetailsHandler = (id) => {
-        this.props.history.replace(this.props.match.path + '/details/' + id);
+        this.props.history.push(this.props.match.path + '/details/' + id);
     };
 
     render() {
         return (
-            <div>
+            <div style={{margin: '20px'}}>
                 <Button btnType="Success" clicked={this.newMemberFormHandler}>New Member</Button>
                 <FamilyMemberTable memberDetails={(id) => this.memberDetailsHandler(id)}/>
             </div>

@@ -44,7 +44,7 @@ export const fetchMembersFail= (error) => {
 export const fetchMembers = () => {
     return dispatch => {
         dispatch(fetchMembersStart());
-        axios.get('/v1/patients')
+        axios.get('/v1/patient')
             .then(response => {
                 dispatch(fetchMembersSuccess(response.data));
             })
@@ -55,7 +55,7 @@ export const fetchMembers = () => {
 export const addMember = (memberData) => {
     return dispatch => {
         dispatch(addMemberStart());
-        axios.post('/v1/patients', memberData)
+        axios.post('/v1/patient', memberData)
             .then(response => {
                 dispatch(addMemberSuccess(response.data, memberData));
             })
