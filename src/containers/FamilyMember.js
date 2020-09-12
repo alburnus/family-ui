@@ -9,7 +9,7 @@ class FamilyMember extends Component {
     };
 
     memberDetailsHandler = (id) => {
-        this.props.history.push(this.props.match.path + '/details/' + id);
+        this.props.history.push(this.props.match.path + '/' + id + '/details' );
     };
 
     render() {

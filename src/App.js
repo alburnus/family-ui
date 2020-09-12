@@ -11,7 +11,7 @@ class App extends Component {
             <div style={{margin: '10px'}}>
                 <Layout>
                     <Switch>
-                        <Route path="/family-members/details/:id" component={MemberDetails}/>
+                        <Route path="/family-members/:id/details" component={MemberDetails}/>
                         <Route path="/family-members/new" component={FamilyMemberForm}/>
                         <Route path="/family-members" component={FamilyMember}/>
                     </Switch>
