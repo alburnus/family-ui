@@ -13,6 +13,7 @@ export const MemberDetails = (props) => {
                     <img src={userImages} alt="Avatar" style={{width: '100%'}}/>
                     <div className={classes.container}>
                         <h4><b>Personal Data</b></h4>
+                        <p>id: {props.match.params.id}</p>
                         <p>nickname: anonymous</p>
                     </div>
                 </div>
